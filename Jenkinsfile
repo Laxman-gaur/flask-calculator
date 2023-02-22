@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh 'git clone https://github.com/Laxman-gaur/flask-calculator.git'
                 sh 'cd /var/lib/jenkins/workspace'
-                sh 'cd ./calc'
+                sh 'cd ./ flask-calculator'
                 sh 'ls'
                 sh 'pwd'
             }
@@ -25,7 +25,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'pm2 start server.js'
+                sh 'python3 app.py'
             }
         }
     }
