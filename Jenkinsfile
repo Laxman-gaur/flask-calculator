@@ -3,16 +3,17 @@ pipeline {
     stages {
         stage('change directory and present working directory') {
             steps {
-                
+                sh 'git clone https://github.com/Laxman-gaur/magic-cursor.git'
                 sh 'cd /var/lib/jenkins/workspace'
-                sh 'git clone https://github.com/Laxman-gaur/flask-calculator.git'
-                sh 'cd ./flask-calculator'
+                sh 'cd ./calc'
+                sh 'ls'
                 sh 'pwd'
             }
         }
         stage('install required dependencies') {
             steps {
-                sh 'pip3 install -r requirements.txt'
+                sh 'npm audit fix --force'
+                sh 'npm install'
             }
         }
         stage ('approval') {
@@ -23,9 +24,9 @@ pipeline {
                 sh "deploy to production"
             }
         }
-        stage('Deploy') {
+        stage('deploy') {
             steps {
-                sh 'python3 app.py'
+                sh 'pm2 start server.js'
             }
         }
     }
