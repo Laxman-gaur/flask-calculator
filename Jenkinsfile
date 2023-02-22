@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('change directory and present working directory') {
             steps {
+                sh 'git clone '
                 sh 'cd /var/lib/jenkins/workspace/flask-calculator'
                 sh 'pwd'
             }
