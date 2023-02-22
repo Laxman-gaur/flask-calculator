@@ -27,7 +27,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'pm2 start app.py'
+                sh 'pm2 start requirement.txt'
             }
         }
     }
