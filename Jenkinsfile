@@ -9,12 +9,13 @@ pipeline {
         }
         stage('change directory') {
             steps {
-                sh 'cd /home/kapil/flask-calculator'
+                sh 'cd /var/lib/jenkins/workspace/flask-calculator'
             }
         }
         stage('install the dependencies') {
             steps {
                 sh 'pip install -r requirements.txt'
+'
             }
         }
         stage('deploy') {
