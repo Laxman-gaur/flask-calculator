@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Clone') {
-            steps {
-                git url: 'https://github.com/Laxman-gaur/flask-calculator.git', branch: 'main'
-            }
-        }
         stage('change directory and present working directory') {
             steps {
                 sh 'cd /var/lib/jenkins/workspace/flask-calculator'
@@ -25,9 +20,9 @@ pipeline {
                 sh "deploy to production"
             }
         }
-        stage('deploy') {
+        stage('Deploy') {
             steps {
-                sh 'pm2 start requirement.txt'
+                sh 'python3 app.py'
             }
         }
     }
