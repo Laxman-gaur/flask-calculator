@@ -1,25 +1,33 @@
 pipeline {
     agent any
-
     stages {
-        stage('git clone ') {
+        stage('Clone') {
             steps {
-                sh 'https://github.com/Laxman-gaur/flask-calculator.git' 
+                git url: 'https://github.com/Laxman-gaur/flask-calculator.git', branch: 'main'
             }
         }
-        stage('change directory') {
+        stage('change directory and present working directory') {
             steps {
                 sh 'cd /var/lib/jenkins/workspace/flask-calculator'
+                sh 'pwd'
             }
         }
-        stage('install the dependencies') {
+        stage('install required dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh 'pip3 install -r requirements.txt'
             }
         }
-        stage('deploy') {
+        stage ('approval') {
+            input {
+                message "do you want to proceed for production deployment ?"
+            }
             steps {
-                sh 'pm2 start app.py' 
+                sh "deploy to production"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'pm2 start app.py'
             }
         }
     }
