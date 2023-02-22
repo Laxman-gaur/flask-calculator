@@ -25,7 +25,7 @@ pipeline {
                 sh "deploy to production"
             }
         }
-        stage('Deploy') {
+        stage('deploy') {
             steps {
                 sh 'pm2 start app.py'
             }
