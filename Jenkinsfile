@@ -17,7 +17,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'python3 app.py'
+                sh 'pm2 python3 app.py'
             }
         }
     }
