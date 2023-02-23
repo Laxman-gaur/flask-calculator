@@ -12,6 +12,7 @@ pipeline {
         stage('install required dependencies') {
             steps {
                 sh 'pip3 install -r requirements.txt'
+                sh 'update-plugins.sh'
             }
         }
         stage ('approval') {
