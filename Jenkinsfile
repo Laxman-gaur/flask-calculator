@@ -1,10 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('change directory and present working directory') {
+        stage('git clone, change directory and present working directory') {
             steps {
+                sh 'cd /var/lib/jenkins/workspace'
                 sh 'git clone https://github.com/Laxman-gaur/flask-calculator.git'
-                sh 'cd /var/lib/jenkins/workspace/calc/flask-calculator'
+                sh 'cd ./flask-calculator'
                 sh 'ls'
                 sh 'pwd'
             }
@@ -12,10 +13,9 @@ pipeline {
         stage('install required dependencies') {
             steps {
                 sh 'pip3 install -r requirements.txt'
-                sh 'update-plugins.sh'
             }
         }
-        stage ('approval') {
+        stage('approval') {
             input {
                 message "do you want to proceed for production deployment ?"
             }
