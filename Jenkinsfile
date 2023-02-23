@@ -12,7 +12,6 @@ pipeline {
         stage('install required dependencies') {
             steps {
                 sh 'pip3 install -r requirements.txt'
-                sh 'python3 -m venv env;source env/bin/activate'
             }
         }
         stage ('approval') {
