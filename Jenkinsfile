@@ -15,12 +15,6 @@ pipeline {
                 sh 'pip3 install -r requirements.txt'
             }
         }
-        stage('approval') {
-            input {
-                message "do you want to proceed for production deployment ?"
-            }
-
-        }
         stage('deploy') {
             steps {
                 sh 'python3 app.py'
