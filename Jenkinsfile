@@ -19,9 +19,7 @@ pipeline {
             input {
                 message "do you want to proceed for production deployment ?"
             }
-            steps {
-                sh "deploy to production"
-            }
+
         }
         stage('deploy') {
             steps {
